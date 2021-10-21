@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Search ,ShoppingCartOutlined} from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 import {mobile} from '../responsive'
+import { useHistory } from 'react-router'
 
 const Container = styled.div`
     height: 60px;
@@ -84,6 +85,18 @@ const MenuItem = styled.div`
 `
 
 const NavBar = () => {
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = `/login`;
+        history.push(path);
+    }
+
+    const routeChange2 = () => {
+        let path = `/register`;
+        history.push(path);
+    }
+
     return (
         <Container>
             <Wrapper>
@@ -100,8 +113,8 @@ const NavBar = () => {
                 </Center>
 
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
+                    <MenuItem onClick={() => {routeChange2()}}>REGISTER</MenuItem>
+                    <MenuItem onClick={() => {routeChange()}}>SIGN IN</MenuItem>
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">
                             <ShoppingCartOutlined />
